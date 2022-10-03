@@ -20,4 +20,4 @@ https://github.com/lucaslopes/alunas/blob/main/LICENSE
 
 ## Cite as
 
-TODO: no final de seu trabalho: Como seu trabalho deve ser citado!!!!
+Alexandre N. Louzada & Lenise M. V. Rodrigues & Lucas Lopes Felipe & Luciane C. J. de Deus. (2022, October 4). lucaslopes/alunas: Estudo sobre a Participação das Mulheres nos Cursos de Graduação na Área STEM (Version fds). Github. https://github.com/lucaslopes/alunas
