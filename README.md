@@ -2,7 +2,7 @@
 
 ## Resumo do trabalho
 
-Mulheres em STEM (comparativo entre cursos da área de TI / publico x privada / ingressante x concluintes) / etnia / procedência (EP/DEF/ETNIA)
+Estudo sobre a Participação das Mulheres nos Cursos de Graduação na Área de STEM (Science,Technology,Engineering,Mathematics).
 
 
 ## Autores
