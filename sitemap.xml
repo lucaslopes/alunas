@@ -2,58 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/introduction.html</loc>
-    <lastmod>2022-09-27T00:09:08.275Z</lastmod>
+    <lastmod>2022-10-03T21:38:07.189Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_aux.html</loc>
-    <lastmod>2022-09-27T00:09:08.769Z</lastmod>
+    <lastmod>2022-10-03T21:38:07.691Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_manipulation.html</loc>
-    <lastmod>2022-09-27T00:09:09.338Z</lastmod>
+    <lastmod>2022-10-03T21:38:08.448Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/404.html</loc>
-    <lastmod>2022-09-27T00:09:09.775Z</lastmod>
+    <lastmod>2022-10-03T21:38:08.948Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_clean.html</loc>
-    <lastmod>2022-09-27T00:09:10.343Z</lastmod>
+    <lastmod>2022-10-03T21:38:09.294Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_collect.html</loc>
-    <lastmod>2022-09-27T00:09:11.217Z</lastmod>
+    <lastmod>2022-10-03T21:38:09.937Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_fair.html</loc>
-    <lastmod>2022-09-27T00:09:11.632Z</lastmod>
+    <lastmod>2022-10-03T21:38:10.342Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/conclusion.html</loc>
-    <lastmod>2022-09-27T00:09:12.036Z</lastmod>
+    <lastmod>2022-10-03T21:38:10.632Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/methods.html</loc>
-    <lastmod>2022-09-27T00:09:12.405Z</lastmod>
+    <lastmod>2022-10-03T21:38:10.952Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_raw.html</loc>
-    <lastmod>2022-09-27T00:09:12.857Z</lastmod>
+    <lastmod>2022-10-03T21:38:11.398Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/related.html</loc>
-    <lastmod>2022-09-27T00:09:13.330Z</lastmod>
+    <lastmod>2022-10-03T21:38:11.833Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lucaslopes.github.io/alunas/sections/figures.html</loc>
+    <lastmod>2022-10-03T21:38:12.632Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_provenance.html</loc>
-    <lastmod>2022-09-27T00:09:13.885Z</lastmod>
+    <lastmod>2022-10-03T21:38:13.128Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_dict.html</loc>
-    <lastmod>2022-09-27T00:09:14.200Z</lastmod>
+    <lastmod>2022-10-03T21:38:13.428Z</lastmod>
   </url>
   <url>
     <loc>https://lucaslopes.github.io/alunas/sections/data_inspect_and_results.html</loc>
-    <lastmod>2022-09-27T00:09:15.955Z</lastmod>
+    <lastmod>2022-10-03T21:38:16.210Z</lastmod>
   </url>
 </urlset>
