@@ -1,8 +1,8 @@
-# Estudo sobre a participação das Mulheres nos Cursos de Graduação da área de Informática
+# Estudo sobre a Participação das Mulheres nos Cursos de Graduação na Área STEM
 
 ## Resumo do trabalho
 
-Mulheres em tecnologia (comparativo entre cursos da área de TI / publico x privada / ingressante x concluintes) / etnia / procedência (EP/DEF/ETNIA)
+Mulheres em STEM (comparativo entre cursos da área de TI / publico x privada / ingressante x concluintes) / etnia / procedência (EP/DEF/ETNIA)
 
 
 ## Autores
