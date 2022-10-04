@@ -206,27 +206,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sections/data_dict.html" class="sidebar-item-text sidebar-link">Dicionário de dados</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../sections/data_provenance.html" class="sidebar-item-text sidebar-link">Proveniência do dataset</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../sections/data_fair.html" class="sidebar-item-text sidebar-link">Enquadramento dos princípios FAIR</a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../sections/data_inspect_and_results.html" class="sidebar-item-text sidebar-link">Análise dos Dados</a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sections/figures.html" class="sidebar-item-text sidebar-link">Figuras</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sections/data_provenance.html" class="sidebar-item-text sidebar-link">Proveniência do dataset</a>
   </div>
 </li>
       </ul>
@@ -249,6 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#renomeação-das-colunas" id="toc-renomeação-das-colunas" class="nav-link" data-scroll-target="#renomeação-das-colunas">Renomeação das colunas</a></li>
   <li><a href="#colunas" id="toc-colunas" class="nav-link" data-scroll-target="#colunas">Colunas</a></li>
   <li><a href="#aplicando-o-tratamento" id="toc-aplicando-o-tratamento" class="nav-link" data-scroll-target="#aplicando-o-tratamento">Aplicando o tratamento</a></li>
+  <li><a href="#dicionário-de-dados" id="toc-dicionário-de-dados" class="nav-link" data-scroll-target="#dicionário-de-dados">Dicionário de Dados</a></li>
   <li><a href="#acrescentando-as-colunas-de-latlon-dos-municípios" id="toc-acrescentando-as-colunas-de-latlon-dos-municípios" class="nav-link" data-scroll-target="#acrescentando-as-colunas-de-latlon-dos-municípios">Acrescentando as colunas de Lat&amp;Lon dos municípios</a></li>
   <li><a href="#lendo-o-arquivo-final" id="toc-lendo-o-arquivo-final" class="nav-link" data-scroll-target="#lendo-o-arquivo-final">Lendo o arquivo final</a></li>
   </ul>
@@ -273,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datatable <span class="im">import</span> dt, f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -287,12 +278,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 .datatable .int     { background: #5D9E5D; }
 .datatable .float   { background: #4040CC; }
 .datatable .str     { background: #CC4040; }
+.datatable .time    { background: #40CC40; }
 .datatable .row_index {  background: var(--jp-border-color3);  border-right: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  font-size: 9px;}
+.datatable .frame tbody td { text-align: left; }
 .datatable .frame tr.coltypes .row_index {  background: var(--jp-border-color0);}
 .datatable th:nth-child(2) { padding-left: 12px; }
 .datatable .hellipsis {  color: var(--jp-cell-editor-border-color);}
 .datatable .vellipsis {  background: var(--jp-layout-color0);  color: var(--jp-cell-editor-border-color);}
 .datatable .na {  color: var(--jp-cell-editor-border-color);  font-size: 80%;}
+.datatable .sp {  opacity: 0.25;}
 .datatable .footer { font-size: 9px; }
 .datatable .frame_dimensions {  background: var(--jp-border-color3);  border-top: 1px solid var(--jp-border-color0);  color: var(--jp-ui-font-color3);  display: inline-block;  opacity: 0.6;  padding: 1px 10px 1px 5px;}
 </style>
@@ -678,14 +672,169 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
+<section id="dicionário-de-dados" class="level3">
+<h3 class="anchored" data-anchor-id="dicionário-de-dados">Dicionário de Dados</h3>
+<p>Fizemos o Dicionário dos Dados, como produto da filtragem e do tratamento, como descrito abaixo:</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span> <span class="op">=</span> [[<span class="st">"NU_ANO_CENSO"</span>, <span class="st">"ano"</span>, <span class="st">"Ano do Censo"</span>],</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>[<span class="st">"NO_REGIAO"</span>, <span class="st">"regiao"</span>, <span class="st">"Nome da região geográfica do local de oferta do curso"</span>],</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>[<span class="st">"SG_UF"</span>, <span class="st">"uf"</span>, <span class="st">"Sigla da Unidade da Federação do local de oferta do curso"</span>],</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>[<span class="st">"CO_MUNICIPIO"</span>, <span class="st">"cod_municipio"</span>, <span class="st">"Código do IBGE do municipio do local de oferta do curso"</span>],</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>[<span class="st">"NO_MUNICIPIO"</span>, <span class="st">"nome_municipio"</span>, <span class="st">"Nome do Município do local de oferta do curso"</span>],</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>[<span class="st">"IN_CAPITAL"</span>, <span class="st">"capital"</span>, <span class="st">"Informa se o local de oferta do curso está localizado em capital de Estado</span><span class="ch">\n</span><span class="st"> 0 - Não</span><span class="ch">\n</span><span class="st">1 - Sim</span><span class="ch">\n</span><span class="st"> (.) Não aplicável (Curso a distância)"</span>], </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>[<span class="st">"CO_CINE_AREA_ESPECIFICA"</span>, <span class="st">"cod_area"</span>, <span class="st">"Código de identificação da área específica, conforme adaptação da Classificação </span><span class="ch">\n</span><span class="st">Internacional Normalizada da Educação Cine/Unesco"</span>],</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>[<span class="st">"NO_CINE_AREA_ESPECIFICA"</span>, <span class="st">"area"</span>, <span class="st">"Nome da área específica, conforme adaptação da Classificação Internacional </span><span class="ch">\n</span><span class="st">Normalizada da Educação Cine/Unesco"</span>],</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>[<span class="st">"NO_CINE_ROTULO"</span>, <span class="st">"curso"</span>, <span class="st">"Nome do curso, conforme adaptação da Classificação Internacional </span><span class="ch">\n</span><span class="st">Normalizada da Educação Cine/Unesco"</span>],</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>[<span class="st">"TP_REDE"</span>, <span class="st">"rede_publica"</span>, <span class="st">"Rede de Ensino</span><span class="ch">\n</span><span class="st">1 - Pública</span><span class="ch">\n</span><span class="st">2 - Privada"</span>],</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>[<span class="st">"TP_MODALIDADE_ENSINO"</span>, <span class="st">"presencial"</span>, <span class="st">"Tipo da modalidade de ensino do curso</span><span class="ch">\n</span><span class="st"> 1 - Presencial</span><span class="ch">\n</span><span class="st"> 2 - Curso a distância"</span>],</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>[<span class="st">"TP_GRAU_ACADEMICO"</span>, <span class="st">"bacharel"</span>, <span class="st">"Tipo do grau acadêmico conferido ao ao aluno pela conclusão dos requisitos exigidos pelo curso</span><span class="ch">\n</span><span class="st">1 - Bacharelado</span><span class="ch">\n</span><span class="st">2 - Licenciatura</span><span class="ch">\n</span><span class="st">3 - Tecnológico</span><span class="ch">\n</span><span class="st">4 - Bacharelado e Licenciatura</span><span class="ch">\n</span><span class="st">(.) Não aplicável (cursos com nivel acadêmico igual a sequencial de formação específica ou </span><span class="ch">\n</span><span class="st">cursos de área básica de curso identificada pela variável TP_ATRIBUTO_INGRESSO)"</span>],</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>[<span class="st">"QT_ING"</span>, <span class="st">"ingressantes"</span>, <span class="st">"Quantidade de ingressante no curso"</span>],</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>[<span class="st">"QT_ING_FEM"</span>, <span class="st">"ingressantes_fem"</span>, <span class="st">"Quantidade de ingressante do sexo feminino no curso"</span>],</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>[<span class="st">"QT_CONC"</span>, <span class="st">"concluintes"</span>, <span class="st">"Quantidade de concluinte no curso"</span>],</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>[<span class="st">"QT_CONC_FEM"</span>, <span class="st">"concluintes_fem"</span>, <span class="st">"Quantidade de concluinte no curso do sexo feminino"</span>],</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>[<span class="st">"-"</span>, <span class="st">"frac_ingressantes"</span>, <span class="st">"Fração de ingressantes mulheres no total de ingressantes"</span>],</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>[<span class="st">"-"</span>, <span class="st">"frac_concluintes"</span>, <span class="st">"Fração de concluintes mulheres no total de concluintes"</span>]]</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>pd_dict <span class="op">=</span> pd.DataFrame(<span class="bu">list</span>, columns <span class="op">=</span>[<span class="st">"Nome da Coluna"</span>, <span class="st">"Coluna Renomeada"</span>, <span class="st">"Descrição"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># para imprimir com quebra de linha:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, HTML</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>display( HTML( pd_dict.to_html().replace(<span class="st">"</span><span class="ch">\\</span><span class="st">n"</span>,<span class="st">"&lt;br&gt;"</span>) ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nome da Coluna</th>
+      <th>Coluna Renomeada</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NU_ANO_CENSO</td>
+      <td>ano</td>
+      <td>Ano do Censo</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NO_REGIAO</td>
+      <td>regiao</td>
+      <td>Nome da região geográfica do local de oferta do curso</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>SG_UF</td>
+      <td>uf</td>
+      <td>Sigla da Unidade da Federação do local de oferta do curso</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CO_MUNICIPIO</td>
+      <td>cod_municipio</td>
+      <td>Código do IBGE do municipio do local de oferta do curso</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NO_MUNICIPIO</td>
+      <td>nome_municipio</td>
+      <td>Nome do Município do local de oferta do curso</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>IN_CAPITAL</td>
+      <td>capital</td>
+      <td>Informa se o local de oferta do curso está localizado em capital de Estado<br> 0 - Não<br>1 - Sim<br> (.) Não aplicável (Curso a distância)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CO_CINE_AREA_ESPECIFICA</td>
+      <td>cod_area</td>
+      <td>Código de identificação da área específica, conforme adaptação da Classificação <br>Internacional Normalizada da Educação Cine/Unesco</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NO_CINE_AREA_ESPECIFICA</td>
+      <td>area</td>
+      <td>Nome da área específica, conforme adaptação da Classificação Internacional <br>Normalizada da Educação Cine/Unesco</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>NO_CINE_ROTULO</td>
+      <td>curso</td>
+      <td>Nome do curso, conforme adaptação da Classificação Internacional <br>Normalizada da Educação Cine/Unesco</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>TP_REDE</td>
+      <td>rede_publica</td>
+      <td>Rede de Ensino<br>1 - Pública<br>2 - Privada</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>TP_MODALIDADE_ENSINO</td>
+      <td>presencial</td>
+      <td>Tipo da modalidade de ensino do curso<br> 1 - Presencial<br> 2 - Curso a distância</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>TP_GRAU_ACADEMICO</td>
+      <td>bacharel</td>
+      <td>Tipo do grau acadêmico conferido ao ao aluno pela conclusão dos requisitos exigidos pelo curso<br>1 - Bacharelado<br>2 - Licenciatura<br>3 - Tecnológico<br>4 - Bacharelado e Licenciatura<br>(.) Não aplicável (cursos com nivel acadêmico igual a sequencial de formação específica ou <br>cursos de área básica de curso identificada pela variável TP_ATRIBUTO_INGRESSO)</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>QT_ING</td>
+      <td>ingressantes</td>
+      <td>Quantidade de ingressante no curso</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>QT_ING_FEM</td>
+      <td>ingressantes_fem</td>
+      <td>Quantidade de ingressante do sexo feminino no curso</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>QT_CONC</td>
+      <td>concluintes</td>
+      <td>Quantidade de concluinte no curso</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>QT_CONC_FEM</td>
+      <td>concluintes_fem</td>
+      <td>Quantidade de concluinte no curso do sexo feminino</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>-</td>
+      <td>frac_ingressantes</td>
+      <td>Fração de ingressantes mulheres no total de ingressantes</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>-</td>
+      <td>frac_concluintes</td>
+      <td>Fração de concluintes mulheres no total de concluintes</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</section>
 <section id="acrescentando-as-colunas-de-latlon-dos-municípios" class="level3">
 <h3 class="anchored" data-anchor-id="acrescentando-as-colunas-de-latlon-dos-municípios">Acrescentando as colunas de Lat&amp;Lon dos municípios</h3>
 <p>Vamos ler o arquivo que contém informações de latitude e longitude dos municípios.</p>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>path_mun <span class="op">=</span> <span class="st">'../data/municipios.csv.zip'</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_mun <span class="op">=</span> pd.read_csv(path_mun)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df_mun <span class="op">=</span> df_mun[[<span class="st">'codigo_ibge'</span>, <span class="st">'latitude'</span>, <span class="st">'longitude'</span>]]</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df_mun</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>path_mun <span class="op">=</span> <span class="st">'../data/municipios.csv.zip'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_mun <span class="op">=</span> pd.read_csv(path_mun)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df_mun <span class="op">=</span> df_mun[[<span class="st">'codigo_ibge'</span>, <span class="st">'latitude'</span>, <span class="st">'longitude'</span>]]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>df_mun</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 
 <div>
@@ -774,8 +923,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Agora efetuaremos uma junção da informação dessa tabela com nosso dataset.</p>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.merge(df_mun, how<span class="op">=</span><span class="st">'left'</span>, left_on<span class="op">=</span><span class="st">'cod_municipio'</span>, right_on<span class="op">=</span><span class="st">'codigo_ibge'</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.merge(df_mun, how<span class="op">=</span><span class="st">'left'</span>, left_on<span class="op">=</span><span class="st">'cod_municipio'</span>, right_on<span class="op">=</span><span class="st">'codigo_ibge'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 
 <div>
@@ -1080,13 +1229,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Reordenando as colunas</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cols_order <span class="op">=</span> [<span class="st">'ano'</span>,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'regiao'</span>, <span class="st">'uf'</span>, <span class="st">'cod_municipio'</span>, <span class="st">'nome_municipio'</span>, <span class="st">'capital'</span>, <span class="st">'latitude'</span>, <span class="st">'longitude'</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'cod_area'</span>, <span class="st">'area'</span>, <span class="st">'curso'</span>, <span class="st">'rede_publica'</span>, <span class="st">'presencial'</span>, <span class="st">'bacharel'</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ingressantes'</span>, <span class="st">'ingressantes_fem'</span>, <span class="st">'concluintes'</span>, <span class="st">'concluintes_fem'</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'frac_ingressantes'</span>, <span class="st">'frac_concluintes'</span>]</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[cols_order]</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cols_order <span class="op">=</span> [<span class="st">'ano'</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'regiao'</span>, <span class="st">'uf'</span>, <span class="st">'cod_municipio'</span>, <span class="st">'nome_municipio'</span>, <span class="st">'capital'</span>, <span class="st">'latitude'</span>, <span class="st">'longitude'</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'cod_area'</span>, <span class="st">'area'</span>, <span class="st">'curso'</span>, <span class="st">'rede_publica'</span>, <span class="st">'presencial'</span>, <span class="st">'bacharel'</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'ingressantes'</span>, <span class="st">'ingressantes_fem'</span>, <span class="st">'concluintes'</span>, <span class="st">'concluintes_fem'</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'frac_ingressantes'</span>, <span class="st">'frac_concluintes'</span>]</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[cols_order]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 
 <div>
@@ -1379,15 +1528,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Salvando o arquivo.</p>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>output_file <span class="op">=</span> <span class="st">'../data/cursos.csv.zip'</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df.to_csv(output_file, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>output_file <span class="op">=</span> <span class="st">'../data/cursos.csv.zip'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>df.to_csv(output_file, index<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="lendo-o-arquivo-final" class="level3">
 <h3 class="anchored" data-anchor-id="lendo-o-arquivo-final">Lendo o arquivo final</h3>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_read <span class="op">=</span> pd.read_csv(output_file)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_read</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_read <span class="op">=</span> pd.read_csv(output_file)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df_read</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 
 <div>
@@ -1679,7 +1828,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_read.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_read.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 17979 entries, 0 to 17978
