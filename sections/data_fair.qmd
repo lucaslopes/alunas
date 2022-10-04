@@ -1,5 +1,0 @@
----
-title: "Enquadramento dos princípios FAIR"
----
-
-TODO.

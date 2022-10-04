@@ -19,12 +19,9 @@ website:
           - sections/data_manipulation.ipynb
       - section: "Análise dos Dados e Resultados"
         contents:
-          - sections/data_dict.qmd
-          # - sections/data_aux.qmd
-          - sections/data_provenance.ipynb
-          - sections/data_fair.qmd
           - sections/data_inspect_and_results.ipynb
           - sections/figures.ipynb
+          - sections/data_provenance.ipynb
       - sections/conclusion.qmd
 
 format:
